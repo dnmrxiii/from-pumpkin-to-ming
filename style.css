@@ -121,35 +121,36 @@ body {
   position: absolute;
   top: 48%;
   left: 50%;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background-color: var(--heart-color);
-  z-index: 4;
   transform: translate(-50%, -50%) rotate(45deg);
-  box-shadow: 0 2px 10px var(--shadow-color);
+  z-index: 4;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform 0.3s ease;
 }
 
 .heart::before,
 .heart::after {
   content: "";
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background-color: var(--heart-color);
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -15px;
+  top: -16px;
   left: 0;
 }
 
 .heart::after {
-  left: -15px;
+  left: -16px;
   top: 0;
 }
+
 
 .heart:hover::after {
   content: "💖";
@@ -260,6 +261,28 @@ body {
     width: 24px;
     height: 24px;
   }
+
+  @media (max-width: 480px) {
+  .heart {
+    width: 24px;
+    height: 24px;
+  }
+
+  .heart::before,
+  .heart::after {
+    width: 24px;
+    height: 24px;
+  }
+
+  .heart::before {
+    top: -12px;
+  }
+
+  .heart::after {
+    left: -12px;
+  }
+}
+
 
   .hidden-message {
     font-size: 12px;
