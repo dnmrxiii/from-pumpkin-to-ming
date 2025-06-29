@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TITE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="envelope-wrapper">
+      <div class="envelope">
+        <div class="letter">
+          <div class="text">
+            <strong>HEHEHEHE</strong>
+            <p title="You are the one and only.">
+              Hello Ming <br />
+              Nǐ shì nèi nèi gè nèi nèi nèi gè nèi gè nèi nèi<br />
+              Nèi nèi gè nèi nèi nèi gè nèi gè nèi nèi<br />
+              Yángguāng cǎihóng xiǎo báimǎ<br />
+              Dī dī dā dī dī dā<br />
+             
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="heart"></div>
+      <div class="hidden-message">Let me bounce on it.</div>
+    </div>
+    <div class="confetti" id="confetti"></div>
+  </div>
+
+  <audio id="bgMusic" src="Nibba nae nae nibba nae nae.mp3" preload="auto"></audio>
+
+  <script>
+    const envelope = document.querySelector('.envelope-wrapper');
+    const audio = document.getElementById('bgMusic');
+    const message = document.querySelector('.hidden-message');
+    const confettiContainer = document.getElementById('confetti');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('flap');
+      message.classList.toggle('show');
+      audio.play();
+      launchConfetti();
+
+      const heart = document.querySelector('.heart');
+      heart.style.animation = 'bounce 0.6s';
+      setTimeout(() => heart.style.animation = '', 600);
+    });
+
+    function launchConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti-piece');
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDuration = 2 + Math.random() * 2 + 's';
+        confetti.style.setProperty('--hue', Math.floor(Math.random() * 360));
+        confettiContainer.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+  </script>
+</body>
+</html>
